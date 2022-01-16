@@ -1,0 +1,62 @@
+[
+    {
+        "title": "Segment Tree",
+        "name": "segment-tree.cpp",
+        "tags": ["data structures", "range query"]
+    },
+    {
+        "title": "Disjoin Set Union",
+        "name": "dsu.cpp",
+        "tags": ["data structures", "graphs"]
+    },
+    {
+        "title": "Modular Integer",
+        "name": "modular.cpp",
+        "tags": ["math"]
+    },
+    {
+        "title": "FFT",
+        "name": "polynomial-fft.cpp",
+        "tags": ["math"]
+    },
+    {
+        "title": "Max Flow",
+        "name": "max-flow.cpp",
+        "tags": ["graphs", "flows"]
+    },
+    {
+        "title": "Suffix Automaton",
+        "name": "suffix-automaton.cpp",
+        "tags": ["data structures", "strings"]
+    },
+    {
+        "title": "Debugging",
+        "name": "debug.cpp",
+        "tags": ["misc"]
+    },
+    {
+        "title": "Range Min Query",
+        "name": "rmq.cpp",
+        "tags": ["data structures", "range query"]
+    },
+    {
+        "title": "LCA with RMQ",
+        "name": "lca.cpp",
+        "tags": ["data structures", "graphs", "trees"]
+    },
+    {
+        "title": "Fenwick Tree",
+        "name": "fenwick.cpp",
+        "tags": ["data structures", "range query"]
+    },
+    {
+        "title": "Implicit Treap",
+        "name": "implicit-treap.cpp",
+        "tags": ["data structures", "range query"]
+    },
+    {
+        "title": "Segment Tree + Lazy Propagation",
+        "name": "lazy-propagation.cpp",
+        "tags": ["data structures", "range query"]
+    }
+]
