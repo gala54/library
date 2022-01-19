@@ -27,7 +27,7 @@ class Navbar extends Component {
               <input
                 className="form-control me-2"
                 type="search"
-                placeholder="Search"
+                placeholder="Filter by name or tags"
                 aria-label="Search"
                 onChange = {this.handleSearchChange}
               />

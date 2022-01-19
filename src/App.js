@@ -18,6 +18,8 @@ class App extends Component {
     }
   
     async componentDidMount() {
+      document.title = "CP Library"
+
       const url = "https://raw.githubusercontent.com/spooky-walrus/cp-templates/master"
       const response = await fetch(url + "/list.json");
       const l = await response.json();
