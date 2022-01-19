@@ -4,12 +4,14 @@ import Card from './Card'
 import View from './View'
 import Navbar from './Navbar'
 import About from './About'
-import list from './list.json'
+import Fuse from 'fuse.js'
+// import list from './list.json'
 
 class App extends Component {
     constructor(props) {
       super(props)
       this.state = {
+        list: [],
         cards: [],
         pages: [],
       }
@@ -17,21 +19,20 @@ class App extends Component {
   
     async componentDidMount() {
       const url = "https://raw.githubusercontent.com/spooky-walrus/cp-templates/master"
-      // const response = await fetch(url + "/list.json");
-      // const list = await response.json();
-
-      // console.log(url);
-      // console.log(list);
-
-      console.log(list);
+      const response = await fetch(url + "/list.json");
+      const l = await response.json();
 
       this.setState({
-        cards: list.map(file =>
+        list: l
+      })
+      
+      this.setState({
+        cards: this.state.list.map(file =>
           <Card key={file.name} name={file.name} title={file.title} tags={file.tags}/>
         )
       })
 
-      list.forEach(async(file) => {
+      this.state.list.forEach(async(file) => {
         const response1 = await fetch(url + '/templates/' + file.name);
         const response2 = await fetch(url + '/docs/' + file.name);
         const code = await response1.text();
@@ -51,17 +52,28 @@ class App extends Component {
     }
 
     searchChange = term => {
-      this.setState({
-        cards: list.filter(file => {
-          if (term == "") {
-            return file
-          } else if (file.title.toLowerCase().includes(term.toLowerCase())) {
-            return file
-          }
-        }).map(file =>
-          <Card key={file.name} name={file.name} title={file.title} tags={file.tags}/>
-        )
-      })
+      if (term === "") {
+        this.setState({
+          cards: this.state.list.map(file => 
+            <Card key={file.name} name={file.name} title={file.title} tags={file.tags}/>
+          )
+        })
+      } else {
+        const options = {
+          shouldSort: false,
+          includeScore: true,
+          threshold: 0.4,
+          keys: ['title', 'tags']
+        }
+        const fuse = new Fuse(this.state.list, options);
+        const result = fuse.search(term);
+        this.setState({
+          cards: result.map(x => 
+            <Card key={x.item.name} name={x.item.name} title={x.item.title} tags={x.item.tags}/>
+          )
+        })
+        console.log(result.map(x => x.item));
+      }
     }
   
     render() {
