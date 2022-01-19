@@ -9,14 +9,12 @@
     border-width: 1px;
     border-color: #dddddd;
     /* border-radius: 15px; */
-    box-shadow:  5px 5px 10px #d4d4d4,
-    -5px -5px 10px #ffffff;
+    box-shadow:  5px 5px 3px #d4d4d4;
 }
 
 #info-card {
     border-radius: 5px;
-    box-shadow:  2px 2px 6px #d5d5d5,
-                 -2px -2px 6px #ffffff;
+    box-shadow:  2px 2px 2px #d5d5d5;
     width: 280px;
 }
 
