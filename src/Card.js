@@ -4,6 +4,7 @@ const Card = (props) => {
       <div className="card h-100" id="info-card">
         <div className="card-body">
           <h6 className="card-title">{props.title}</h6>
+          <code>{props.name}.hpp</code>
           <div style={{"marginBottom": "12px"}}>
             {props.tags.map(tag => 
               <div key={tag} id="tag">{tag}</div>

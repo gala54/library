@@ -14,6 +14,7 @@ class App extends Component {
         list: [],
         cards: [],
         pages: [],
+        hehe: ""
       }
     }
   
@@ -22,10 +23,9 @@ class App extends Component {
 
       const url = "https://raw.githubusercontent.com/spooky-walrus/cp-templates/master"
       const response = await fetch(url + "/list.json");
-      const l = await response.json();
-
+      const data = await response.json();
       this.setState({
-        list: l
+        list: data
       })
       
       this.setState({
@@ -35,17 +35,19 @@ class App extends Component {
       })
 
       this.state.list.forEach(async(file) => {
-        const response1 = await fetch(url + '/templates/' + file.name);
-        const response2 = await fetch(url + '/docs/' + file.name);
-        const code = await response1.text();
-        const usage = await response2.text();
+        const code_promise = await fetch(url + '/templates/' + file.name + '.hpp');
+        const example_promise = await fetch(url + '/examples/' + file.name + '.cpp');
+        const doc_promise = await fetch(url + '/docs/' + file.name + '.md');
+        const code = await code_promise.text();
+        const example = await example_promise.text();
+        const doc = await doc_promise.text();
         this.setState({
           pages: [...this.state.pages,
             <Route 
               key={file.name}
               path={file.name}
               element={
-                <View name={file.name} title={file.title} code={code} usage={usage}/>
+                <View name={file.name} title={file.title} code={code} example={example} doc={doc}/>
               }
             />
           ]
@@ -74,7 +76,6 @@ class App extends Component {
             <Card key={x.item.name} name={x.item.name} title={x.item.title} tags={x.item.tags}/>
           )
         })
-        console.log(result.map(x => x.item));
       }
     }
   
