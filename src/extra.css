@@ -14,11 +14,12 @@
 #info-card {
     border-radius: 5px;
     box-shadow:  2px 2px 2px #d5d5d5;
-    width: 280px;
+    width: 270px;
 }
 
 #card-grid {
-    margin-top: 5vh;
+    margin: 6vh 4vw;
+    padding: 0;
 }
 
 #tag {

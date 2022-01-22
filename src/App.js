@@ -85,8 +85,8 @@ class App extends Component {
           <Navbar onSearchChange={this.searchChange}/>
           <Routes>
             <Route path="/" element={
-              <div className="container-fluid" id="card-grid">
-                <div className="row row-cols-auto justify-content-center g-3">
+              <div className="container" id="card-grid">
+                <div className="row row-cols-auto g-3">
                   {this.state.cards}
                 </div>
               </div>
